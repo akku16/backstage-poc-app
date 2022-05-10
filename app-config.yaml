@@ -12,7 +12,7 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
-  baseUrl: http://20.230.202.175:7007
+  baseUrl: http://20.230.202.175:80
   listen:
     port: 7007
   csp:
