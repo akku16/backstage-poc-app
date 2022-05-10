@@ -4,22 +4,25 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+  - bash: |
+      pwd
+      ls -ltr
   - task: Kubernetes@1
-    displayName: kubectl apply using arguments
+    displayName: Create Namespace
     inputs:
       connectionType: Azure Resource Manager
       azureSubscriptionEndpoint: service-connection-k8s
       azureResourceGroup: MyResourceGroup
       kubernetesCluster: aks64d8
       command: apply
-      arguments: -f ../kubernetes/namespace.yaml
+      arguments: -f kubernetes/namespace.yaml
 
   - task: Kubernetes@1
-    displayName: kubectl apply using arguments
+    displayName: Create backstage deployment and service
     inputs:
       connectionType: Azure Resource Manager
       azureSubscriptionEndpoint: service-connection-k8s
       azureResourceGroup: MyResourceGroup
       kubernetesCluster: aks64d8
       command: apply
-      arguments: -f ../kubernetes/backstage.yaml -f ../kubernetes/backstage-service.yaml
+      arguments: -f kubernetes/backstage.yaml -f kubernetes/backstage-service.yaml
