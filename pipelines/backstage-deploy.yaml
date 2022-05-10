@@ -29,6 +29,7 @@ steps:
       azureSubscriptionEndpoint: service-connection-k8s
       azureResourceGroup: MyResourceGroup
       kubernetesCluster: aks64d8
+      namespace: backstagehttp
       command: apply
       arguments: -f kubernetes/backstage.yaml -f kubernetes/backstage-service.yaml
       secretType: generic
