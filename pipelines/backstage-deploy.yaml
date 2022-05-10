@@ -3,26 +3,31 @@ trigger: none
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  - group: backstage-group
+
 steps:
   - bash: |
       pwd
       ls -ltr
-  - task: Kubernetes@1
-    displayName: Create Namespace
-    inputs:
-      connectionType: Azure Resource Manager
-      azureSubscriptionEndpoint: service-connection-k8s
-      azureResourceGroup: MyResourceGroup
-      kubernetesCluster: aks64d8
-      command: apply
-      arguments: -f kubernetes/namespace.yaml
+      echo ${{ variables.GITHUB-TOKEN }}
+      echo ${{ variables.AZURE-TECHDOCS-STORAGE-KEY }}
+  # - task: Kubernetes@1
+  #   displayName: Create Namespace
+  #   inputs:
+  #     connectionType: Azure Resource Manager
+  #     azureSubscriptionEndpoint: service-connection-k8s
+  #     azureResourceGroup: MyResourceGroup
+  #     kubernetesCluster: aks64d8
+  #     command: apply
+  #     arguments: -f kubernetes/namespace.yaml
 
-  - task: Kubernetes@1
-    displayName: Create backstage deployment and service
-    inputs:
-      connectionType: Azure Resource Manager
-      azureSubscriptionEndpoint: service-connection-k8s
-      azureResourceGroup: MyResourceGroup
-      kubernetesCluster: aks64d8
-      command: apply
-      arguments: -f kubernetes/backstage.yaml -f kubernetes/backstage-service.yaml
+  # - task: Kubernetes@1
+  #   displayName: Create backstage deployment and service
+  #   inputs:
+  #     connectionType: Azure Resource Manager
+  #     azureSubscriptionEndpoint: service-connection-k8s
+  #     azureResourceGroup: MyResourceGroup
+  #     kubernetesCluster: aks64d8
+  #     command: apply
+  #     arguments: -f kubernetes/backstage.yaml -f kubernetes/backstage-service.yaml
