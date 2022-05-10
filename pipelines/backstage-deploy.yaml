@@ -4,14 +4,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - bash: |
   - task: Kubernetes@1
     displayName: kubectl apply using arguments
     inputs:
       connectionType: Azure Resource Manager
       azureSubscriptionEndpoint: service-connection-k8s
-      azureResourceGroup: backstage-deployment
-      kubernetesCluster: backstage-k8s
+      azureResourceGroup: MyResourceGroup
+      kubernetesCluster: aks64d8
       command: apply
       arguments: -f ../kubernetes/namespace.yaml
 
@@ -20,7 +19,7 @@ steps:
     inputs:
       connectionType: Azure Resource Manager
       azureSubscriptionEndpoint: service-connection-k8s
-      azureResourceGroup: backstage-deployment
-      kubernetesCluster: backstage-k8s
+      azureResourceGroup: MyResourceGroup
+      kubernetesCluster: aks64d8
       command: apply
       arguments: -f ../kubernetes/backstage.yaml -f ../kubernetes/backstage-service.yaml
