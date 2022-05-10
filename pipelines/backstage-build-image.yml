@@ -17,5 +17,7 @@ steps:
     command: buildAndPush
     containerRegistry: backstage-container-reg
     repository: backstage
-    tags: latest
+    tags: |
+      latest
+      $(Build.BuildId)
   
