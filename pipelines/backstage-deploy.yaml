@@ -5,15 +5,6 @@ pool:
 
 steps:
   - bash: |
-  # - task: Kubernetes@1
-  #   displayName: kubectl apply using arguments
-  #   inputs:
-  #     connectionType: Azure Resource Manager
-  #     azureSubscriptionEndpoint: service-connection-k8s
-  #     azureResourceGroup: backstage-deployment
-  #     kubernetesCluster: backstage-k8s
-  #     command: apply
-  #     arguments: -f kubernetes/namespace.yaml
   - task: Kubernetes@1
     displayName: kubectl apply using arguments
     inputs:
@@ -22,4 +13,14 @@ steps:
       azureResourceGroup: backstage-deployment
       kubernetesCluster: backstage-k8s
       command: apply
-      arguments: -f kubernetes/backstage.yaml -f kubernetes/backstage-service.yaml
+      arguments: -f ../kubernetes/namespace.yaml
+
+  - task: Kubernetes@1
+    displayName: kubectl apply using arguments
+    inputs:
+      connectionType: Azure Resource Manager
+      azureSubscriptionEndpoint: service-connection-k8s
+      azureResourceGroup: backstage-deployment
+      kubernetesCluster: backstage-k8s
+      command: apply
+      arguments: -f ../kubernetes/backstage.yaml -f ../kubernetes/backstage-service.yaml
