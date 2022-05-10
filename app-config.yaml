@@ -12,7 +12,7 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
-  baseUrl: http://localhost:7007
+  baseUrl: http://20.230.202.175:7007
   listen:
     port: 7007
   csp:
@@ -21,7 +21,7 @@ backend:
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
-    origin: *
+    origin: http://20.230.202.175
     methods: [GET, POST, PUT, DELETE]
     credentials: true
   database:
@@ -104,6 +104,6 @@ catalog:
       rules:
         - allow: [Template]
     - type: url
-      target: https://github.com/Manish3323/hello-react-app/blob/master/catalog-info.yaml
+      target: https://github.com/Manish3323/dataproduct1/blob/master/catalog-info.yaml
       rules:
         - allow: [DataProduct]
