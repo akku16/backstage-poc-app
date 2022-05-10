@@ -10,8 +10,8 @@ steps:
   - bash: |
       pwd
       ls -ltr
-      echo $[variables.GITHUB-TOKEN]
-      echo $[variables.AZURE-TECHDOCS-STORAGE-KEY]
+      echo $(GITHUB-TOKEN)
+      echo $(AZURE-TECHDOCS-STORAGE-KEY)
   # - task: Kubernetes@1
   #   displayName: Create Namespace
   #   inputs:
